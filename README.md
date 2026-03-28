@@ -56,7 +56,12 @@ java -jar antlr-4.13.1-complete.jar -Dlanguage=Python3 -visitor -no-listener gra
 # Nota: Garante que os ficheiros .py ficam na raiz da pasta /src
 ```
 
+## 👥 Autores (Grupo: It Compiles on My Machine - Efolio A)
+* **Fernando Gonçalves** - [Goncalves95](https://github.com/Goncalves95)
+* **Ricardo Costa** - [Rtheghost](https://github.com/Rtheghost?tab=overview&from=2026-03-01&to=2026-03-28)
 
-## 📚 Fontes
-
-* Source for ANTLR: https://github.com/antlr/antlr4/blob/master/doc/python-target.md
+## 📚 Fontes e Referências
+* **Enunciado do E-fólio A**: Disciplina de Compilação (UAb).
+* **ANTLR4 Documentation**: [antlr.org](https://www.antlr.org/)
+* **Python Runtime for ANTLR4**: [PyPI antlr4-python3-runtime](https://pypi.org/project/antlr4-python3-runtime/)
+* **Assistência de IA**: Esta implementação contou com o apoio da Inteligência Artificial (Gemini/ChatGPT) para resolução de conflitos.
