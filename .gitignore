@@ -1,24 +1,29 @@
-
-# Ambientes Virtuais
+# Ambientes Virtuais (Python)
 .venv/
 venv/
 ENV/
+env/
+bin/
+lib/
+include/
 
-# Python
+# Byte-compiled / Cache (Python)
 __pycache__/
 *.py[cod]
 *$py.class
 
-# ANTLR - Ficheiros gerados (devem ser gerados localmente por cada membro)
-src/MOCPLexer.py
-src/MOCPParser.py
-src/MOCPVisitor.py
-src/MOCPListener.py
-src/*.tokens
-src/*.interp
+# Ficheiros Temporários do ANTLR (Java)
+.antlr/
+*.interp
+*.tokens
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
 
 # VS Code
 .vscode/
 
-# Sistema macOS
-.DS_Store
+# Binários e JARs (Opcional)
+# antlr-4.13.1-complete.jar
