@@ -30,7 +30,7 @@ function_call
 // Expressões
 expr : ID | NUMBER | STRING ;
 
-// --- TOKENS (Regras em Português) ---
+// TOKENS (Regras em Português)
 INTEIRO   : 'inteiro' ;
 REAL      : 'real' ;
 VAZIO     : 'vazio' ;
@@ -51,7 +51,7 @@ RBRACE : '}' ;
 // Tipos de Dados
 ID     : [a-zA-Z_][a-zA-Z0-9_]* ;
 NUMBER : [0-9]+ ('.' [0-9]+)? ;
-STRING : '"' .*? '"' ; // Regra para aceitar textos entre aspas
+STRING : '"' .*? '"' ; // Esta regra permite aceitar textos entre aspas
 
 WS     : [ \t\r\n]+ -> skip ;
 COMMENT: '/*' .*? '*/' -> skip ;
