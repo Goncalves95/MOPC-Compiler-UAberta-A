@@ -58,7 +58,7 @@ java -jar antlr-4.13.1-complete.jar -Dlanguage=Python3 -visitor -no-listener gra
 
 ## 👥 Autores (Grupo: It Compiles on My Machine - Efolio A)
 * **Fernando Gonçalves** - [Goncalves95](https://github.com/Goncalves95)
-* **Ricardo Costa** - [Rtheghost](https://github.com/Rtheghost?tab=overview&from=2026-03-01&to=2026-03-28)
+* **Ricardo Costa** - [Rtheghost](https://github.com/Rtheghost)
 
 ## 📚 Fontes e Referências
 * **Enunciado do E-fólio A**: Disciplina de Compilação (UAb).
