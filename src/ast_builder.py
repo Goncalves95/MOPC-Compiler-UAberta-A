@@ -1,11 +1,23 @@
 from MOCPVisitor import MOCPVisitor
+from antlr4 import ParserRuleContext
 
 
 class ASTBuilder(MOCPVisitor):
     def visitProgram(self, ctx):
+        # Versão segura para iterar sobre os itens do programa
+        items = []
+        # O ANTLR pode gerar ctx.item() ou ctx.getChildren()
+        child_nodes = ctx.item() if hasattr(ctx, 'item') else [ctx.getChild(i) for i in range(ctx.getChildCount())]
+        
+        for node in child_nodes:
+            # Ignorar o token <EOF> que não tem método visit
+            if hasattr(node, 'getRuleIndex') or isinstance(node, ParserRuleContext):
+                res = self.visit(node)
+                if res: items.append(res)
+        
         return {
             "type": "Program",
-            "items": [self.visit(item) for item in ctx.item()]
+            "items": items
         }
 
     def visitItem(self, ctx):
@@ -69,10 +81,15 @@ class ASTBuilder(MOCPVisitor):
         return [self.visit(param) for param in ctx.param()]
 
     def visitParam(self, ctx):
+        # Tenta ctx.baseType(), se falhar usa index 0
+        base_type_node = ctx.baseType() if hasattr(ctx, 'baseType') else ctx.getChild(0)
+        # Tenta ctx.paramDecl(), se falhar usa index 1
+        param_decl_node = ctx.paramDecl() if hasattr(ctx, 'paramDecl') else ctx.getChild(1)
+        
         return {
             "type": "Param",
-            "baseType": self.visit(ctx.baseType()),
-            "decl": self.visit(ctx.paramDecl())
+            "baseType": self.visit(base_type_node),
+            "decl": self.visit(param_decl_node)
         }
 
     def visitParamDecl(self, ctx):
@@ -111,10 +128,15 @@ class ASTBuilder(MOCPVisitor):
         return self.visit(ctx.getChild(0))
 
     def visitDeclaration(self, ctx):
+        # Tenta ctx.baseType(), se falhar usa o primeiro filho (index 0)
+        base_type_node = ctx.baseType() if hasattr(ctx, 'baseType') else ctx.getChild(0)
+        # Tenta ctx.initDeclaratorList(), se falhar usa o segundo filho (index 1)
+        decl_list_node = ctx.initDeclaratorList() if hasattr(ctx, 'initDeclaratorList') else ctx.getChild(1)
+        
         return {
             "type": "Declaration",
-            "baseType": self.visit(ctx.baseType()),
-            "declarators": self.visit(ctx.initDeclaratorList())
+            "baseType": self.visit(base_type_node),
+            "declarators": self.visit(decl_list_node)
         }
 
     def visitInitDeclaratorList(self, ctx):
@@ -243,7 +265,7 @@ class ASTBuilder(MOCPVisitor):
         return [self.visit(expr) for expr in ctx.expr()]
 
     def visitExpr(self, ctx):
-        return self.visit(ctx.logicalOrExpr())
+        return self.visit(ctx.getChild(0))
 
     def visitLogicalOrExpr(self, ctx):
         return self._build_left_assoc(ctx)
@@ -270,7 +292,6 @@ class ASTBuilder(MOCPVisitor):
                 "op": ctx.getChild(0).getText(),
                 "operand": self.visit(ctx.getChild(1))
             }
-
         return self.visit(ctx.getChild(0))
 
     def visitCastExpr(self, ctx):

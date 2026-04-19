@@ -48,6 +48,14 @@ antlr4 -Dlanguage=Python3 -visitor -no-listener grammar/MOCP.g4 -o src/
 python3 src/main.py examples/teste.mocp
 ```
 
+## Como Executar a AST
+
+```bash
+python3 src/main.py examples/teste.mocp --ast
+```
+
+Nota: O comando --ast exporta a estrutura lógica do programa em formato JSON para facilitar a visualização da hierarquia de comandos.
+
 
 ## Alterar a Gramática
 
