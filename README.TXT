@@ -60,8 +60,8 @@ Nota: O comando --ast exporta a estrutura lógica do programa em formato JSON pa
 ## Alterar a Gramática
 
 ```bash
-java -jar antlr-4.13.1-complete.jar -Dlanguage=Python3 -visitor -no-listener grammar/MOCP.g4 -o src/
-# Nota: Garante que os ficheiros .py ficam na raiz da pasta /src
+java -jar antlr-4.13.1-complete.jar -Dlanguage=Python3 -visitor -no-listener -Xexact-output-dir -o src grammar/MOCP.g4
+# Nota: garante que os ficheiros .py são gerados na raiz da pasta src.”
 ```
 
 ## 👥 Autores (Grupo: It Compiles on My Machine - Efolio A)
