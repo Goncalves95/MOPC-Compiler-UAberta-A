@@ -24,33 +24,38 @@
 
 3. **Instalar dependências:**
    ```bash
-   pip install -r requirements.txt
+   Windows:
+   py -m pip install -r requirements.txt
+
+   macOS / Linux:
+   python3 -m pip install -r requirements.txt
    ```
 
-
-
-## 📦 Instalação
-Instale o runtime do ANTLR para Python:
-```bash
-pip install antlr4-python3-runtime
-```
 
 ## Como Gerar o Parser
 
 ```bash
-antlr4 -Dlanguage=Python3 -visitor -no-listener grammar/MOCP.g4 -o src/
+java -jar antlr-4.13.1-complete.jar -Dlanguage=Python3 -visitor -no-listener -Xexact-output-dir -o src grammar/MOCP.g4
 ```
 
 
 ## Como Executar
 
 ```bash
+Windows:
+py src/main.py examples/teste.mocp
+
+macOS / Linux:
 python3 src/main.py examples/teste.mocp
 ```
 
 ## Como Executar a AST
 
 ```bash
+Windows:
+py src/main.py examples/teste.mocp --ast
+
+macOS / Linux:
 python3 src/main.py examples/teste.mocp --ast
 ```
 
@@ -61,12 +66,12 @@ Nota: O comando --ast exporta a estrutura lógica do programa em formato JSON pa
 
 ```bash
 java -jar antlr-4.13.1-complete.jar -Dlanguage=Python3 -visitor -no-listener -Xexact-output-dir -o src grammar/MOCP.g4
-# Nota: garante que os ficheiros .py são gerados na raiz da pasta src.”
+# Nota: garante que os ficheiros .py são gerados na raiz da pasta src.
 ```
 
 ## 👥 Autores (Grupo: It Compiles on My Machine - Efolio A)
 * **Fernando Gonçalves** - [Goncalves95](https://github.com/Goncalves95)
-* **Ricardo Costa** - [Rtheghost](https://github.com/Rtheghost?tab=overview&from=2026-03-01&to=2026-03-28)
+* **Ricardo Costa** - [Rtheghost](https://github.com/Rtheghost)
 
 ## 📚 Fontes e Referências
 * **Enunciado do E-fólio A**: Disciplina de Compilação (UAb).
